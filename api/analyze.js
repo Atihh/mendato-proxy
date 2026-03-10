@@ -34,3 +34,11 @@ module.exports = async function handler(req, res) {
     res.status(500).json({ error: err.message });
   }
 }
+
+module.exports.config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '20mb'
+    }
+  }
+}
