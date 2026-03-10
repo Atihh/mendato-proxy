@@ -1,17 +1,5 @@
 module.exports = async function handler(req, res) {
-  const ALLOWED_ORIGINS = [
-    'https://mendato.de',
-    'https://www.mendato.de',
-    'https://mendato-10b4d84656a9e478efa241af76fe0ef.webflow.io'
-  ];
-
-  const origin = req.headers.origin;
-  if (ALLOWED_ORIGINS.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  } else {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-  }
-
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -36,9 +24,5 @@ module.exports = async function handler(req, res) {
 }
 
 module.exports.config = {
-  api: {
-    bodyParser: {
-      sizeLimit: '20mb'
-    }
-  }
+  api: { bodyParser: { sizeLimit: '20mb' } }
 }
