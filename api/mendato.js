@@ -7,7 +7,7 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   try {
-    const apiKey = process.env.MENDATO_API_KEY || req.headers['x-mendato-key'];
+    const apiKey = req.headers['x-mendato-key'];
     if (!apiKey) return res.status(401).json({ error: 'No Mendato API key configured' });
 
     const response = await fetch('https://api.mendato.com/graphql', {
